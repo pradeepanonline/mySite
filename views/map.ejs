@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include header %>
+
+<body><% include navbar %> <% include jumbo %>
+
+</body>
+
+<style>
+table,th,td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-spacing: 5px;
+	text-align: left;
+	color: white;
+	background-color: #4D4D4D;
+}
+</style>
+
+
+<!-- <div id="map" style="width: 800px; height: 450px; padding-left: 100px;"></div>-->
+
+<!-- Columns are always 50% wide, on mobile and desktop -->
+    <div class="row">
+      <div class="col-xs-6" id="prad" style="width: 800px; height: 450px; padding-left: 100px;">.col-xs-6</div>
+      <div class="col-xs-6" id ="details" style="width: 900px; height: 120px; padding-left: 100px;">.col-xs-6</div>
+    </div>
+
+
+
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://newsignature.github.com/us-map/js/libs/raphael.js"></script>
+<script
+	src="http://newsignature.github.com/us-map/js/libs/jquery.usmap.js"></script>
+
+<script>
+
+
+	$(document).ready(function() {
+		$('#prad').usmap({
+			click: myCallback
+		});
+	});
+
+	function myCallback(event, data)
+	{
+		 alert('you clicked state '+ data.name);
+		 $.ajax({ 
+         type: "GET",
+              dataType: "text",
+             url: "http://localhost:3000/info?state="+data.name,
+             success: function(response){  
+                 alert(response);
+                 // 
+                 //console.log(response);     
+                var responseText = jQuery.parseJSON(response);
+                //var responseText = jQuery.parseJSON('{ "name": "John" }' );
+                //console.log(responseText);
+                $('#details').html("<h3>" + responseText.longurl + "</h3>");                  
+             }
+         });
+  
+
+    }
+     
+
+  
+</script>
+
+<div class="container"><% include footer %></div>
+
+
+</html>

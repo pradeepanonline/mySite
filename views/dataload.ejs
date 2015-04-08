@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<title><%= title %></title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
+		<!-- 1. Add JQuery and Highcharts in the head of your page -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+         
+        <!-- 2. You can add print and export feature by adding this line -->
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+         
+
+
+ 
+<script type="text/javascript">
+           jQuery(document).ready(function() {
+        	   $('#rahman').highcharts({
+                title: {
+                    text: 'Likability Trend - A.R.Rahman Ok Kanmani',
+                    x: -20 //center
+                },
+                subtitle: {
+                    text: 'Source: youtube.com',
+                    x: -20
+                },
+                xAxis: {
+                    categories: ['04-01', '04-02', '04-03', '04-04', '04-05']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Avg Rating'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    valueSuffix: '°C'
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: [{
+                    name: 'Aye Sinamika',
+                    data: [4.98, 4.3, 4.8, 4.8, 4.867]
+                }, {
+                    name: 'Naane Varugiraen',
+                    data: [4.5, 4.3, 4.6, 4.9, 4.8]
+                }, {
+                    name: 'Theera Ulaa',
+                    data: [4.1, 4.2, 4.3, 4.3, 4.8]
+                }, {
+                    name: 'Kaara Aattakkaara',
+                    data: [3.9, 4.2, 4.5, 4.59, 4.89]
+                }]
+            });
+        });
+      
+</script>
+ 
+</head>
+
+
+<body>
+	<% include navbar %> 
+	<h3>Hhihihihihi</h3><br><br>
+	
+		<input type="text" id="mytext">
+		<button id="mybutton">Enter Youtube Video ID here</button>
+		<button id="loadByVideoId">Enter Youtube Video ID to find</button> <br><br>
+		<div id="rahman" style="min-width: 310px; height: 400px; margin: 0 auto"> </div>
+		<div id="pradeepan" style="min-width: 310px; height: 400px; margin: 0 auto"> </div>
+	
+	
+</body>
+
+<style>
+table,th,td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-spacing: 5px;
+	text-align: left;
+	color: white;
+	background-color: #4D4D4D;
+}
+</style>
+
+<script>
+
+$(document).ready(function(){
+    $("#mybutton").click(function () {
+       console.log("Clicked");
+      var youtubeurl = $("#mytext").val();
+        var videoInfo = "https://gdata.youtube.com/feeds/api/videos/" + youtubeurl + "?v=1";
+        $.get(videoInfo).done(function (xml) {
+            var rating = xml.getElementsByTagName("rating")[0];
+            var statistics = xml.getElementsByTagName("statistics")[0];
+            if (rating) {
+                console.log("Average rating: " + rating.getAttribute("average"));
+                console.log("Number of Votes: " + rating.getAttribute("numRaters"));
+                console.log("Number of views: " + statistics.getAttribute("viewCount"));
+            } else {
+                alert("Sorry, no rating.");
+            }
+        });
+    });
+});
+
+$(document).ready(function(){
+    $("#loadByVideoId").click(function () {
+       console.log("Clicked");
+       var youtubeurl = $("#mytext").val();
+       $.ajax({ 
+           type: "GET",
+                dataType: "text",
+               url: "http://localhost:3000/dataload/"+ youtubeurl,
+               success: function(response){        
+                  //var responseText = jQuery.parseJson(response);
+                  var responseText = jQuery.parseJSON('{ "name": "John" }' );
+                  //render(response, data.name);
+                  console.log("Hi" + JSON.stringify(response));   
+                  var responseObj = jQuery.parseJSON(response);
+                  alert(responseObj.viewCount);      
+                  $('#pradeepan').text((response));      
+               }
+           });
+    });
+});
+
+</script>
+ 
+<div class="container"><% include footer %></div>
+
+
+</html>

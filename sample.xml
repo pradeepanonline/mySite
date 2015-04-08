@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<entry xmlns="http://www.w3.org/2005/Atom" xmlns:app="http://purl.org/atom/app#"
+	xmlns:yt="http://gdata.youtube.com/schemas/2007" xmlns:gd="http://schemas.google.com/g/2005"
+	xmlns:media="http://search.yahoo.com/mrss/">
+	<id>http://gdata.youtube.com/feeds/api/videos/VVoO9cdk5Eo</id>
+	<published>2015-04-03T18:30:00.000Z</published>
+	<updated>2015-04-06T02:11:57.000Z</updated>
+	<app:control>
+		<yt:state name="restricted" reasonCode="limitedSyndication">Syndication of this
+			video was restricted.</yt:state>
+	</app:control>
+	<category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video" />
+	<category scheme="http://gdata.youtube.com/schemas/2007/categories.cat"
+		term="Music" label="Music" />
+	<title type="text">OK Kanmani - Kaara Aattakkaara Lyric Video | A.R.
+		Rahman, Mani Ratnam</title>
+	<content type="text">Listen to 'Kaara Aattakaara' from O Kadhal
+		Kanmani sung by Aaryan Dinesh Kanagaratnam, Darshana &amp; Shashaa
+		Tirupati. The simple yet beautifully structured song hits you like a
+		chill breeze, with lyrics by Aaryan Dinesh Kanagaratnam, Mani Ratnam
+		&amp; A.R. Rahman.
+
+		Song Name - Kaara Aattakkaara
+		Movie - O Kadhal Kanmani
+		Singer - Aaryan Dinesh Kanagaratnam, Darshana &amp; Shashaa Tirupati
+		Music - A.R. Rahman
+		Lyrics - Aaryan Dinesh Kanagaratnam, Mani Ratnam, A.R. Rahman
+		Director - Mani Ratnam
+		Starring - Dulquer Salmaan, Nithya Menen
+		Producer - Mani Ratnam, Suhasini Mani Ratnam
+		Studio - Madras Talkies
+		Music Label - Sony Music Entertainment India Pvt. Ltd.
+
+		© 2015 Sony Music Entertainment India Pvt. Ltd.
+
+		Subscribe:
+		Vevo - http://www.youtube.com/user/sonymusicindiavevo?sub_confirmation=1
+		Like us:
+		Facebook: https://www.facebook.com/SonyMusicSouth
+		Follow us:
+		Twitter: https://twitter.com/SonyMusicSouth
+		G+: https://plus.google.com/+SonyMusicIndia
+	</content>
+	<link rel="alternate" type="text/html"
+		href="https://www.youtube.com/watch?v=VVoO9cdk5Eo&amp;feature=youtube_gdata" />
+	<link rel="http://gdata.youtube.com/schemas/2007#video.related"
+		type="application/atom+xml"
+		href="https://gdata.youtube.com/feeds/api/videos/VVoO9cdk5Eo/related?v=1" />
+	<link rel="self" type="application/atom+xml"
+		href="https://gdata.youtube.com/feeds/api/videos/VVoO9cdk5Eo?v=1" />
+	<author>
+		<name>SonyMusicSouthVEVO</name>
+		<uri>https://gdata.youtube.com/feeds/api/users/SonyMusicSouthVEVO
+		</uri>
+	</author>
+	<gd:comments>
+		<gd:feedLink rel="http://gdata.youtube.com/schemas/2007#comments"
+			href="https://gdata.youtube.com/feeds/api/videos/VVoO9cdk5Eo/comments?v=1"
+			countHint="142" />
+	</gd:comments>
+	<yt:hd />
+	<media:group>
+		<media:category label="Music"
+			scheme="http://gdata.youtube.com/schemas/2007/categories.cat">Music</media:category>
+		<media:content
+			url="https://www.youtube.com/v/VVoO9cdk5Eo?version=3&amp;f=videos&amp;app=youtube_gdata"
+			type="application/x-shockwave-flash" medium="video" isDefault="true"
+			expression="full" duration="338" yt:format="5" />
+		<media:description type="plain">Listen to 'Kaara Aattakaara'
+			from O Kadhal Kanmani sung by Aaryan Dinesh Kanagaratnam, Darshana
+			&amp; Shashaa Tirupati. The simple yet beautifully structured song
+			hits you like a chill breeze, with lyrics by Aaryan Dinesh
+			Kanagaratnam, Mani Ratnam &amp; A.R. Rahman.
+
+			Song Name - Kaara Aattakkaara
+			Movie - O Kadhal Kanmani
+			Singer - Aaryan Dinesh Kanagaratnam, Darshana &amp; Shashaa Tirupati
+			Music - A.R. Rahman
+			Lyrics - Aaryan Dinesh Kanagaratnam, Mani Ratnam, A.R. Rahman
+			Director - Mani Ratnam
+			Starring - Dulquer Salmaan, Nithya Menen
+			Producer - Mani Ratnam, Suhasini Mani Ratnam
+			Studio - Madras Talkies
+			Music Label - Sony Music Entertainment India Pvt. Ltd.
+
+			© 2015 Sony Music Entertainment India Pvt. Ltd.
+
+			Subscribe:
+			Vevo - http://www.youtube.com/user/sonymusicindiavevo?sub_confirmation=1
+			Like us:
+			Facebook: https://www.facebook.com/SonyMusicSouth
+			Follow us:
+			Twitter: https://twitter.com/SonyMusicSouth
+			G+: https://plus.google.com/+SonyMusicIndia
+		</media:description>
+		<media:keywords />
+		<media:player
+			url="https://www.youtube.com/watch?v=VVoO9cdk5Eo&amp;feature=youtube_gdata_player" />
+		<media:restriction type="country" relationship="allow">FI FJ
+			FK FM FO FR SC KZ KY SG SE SD SK KR SI KP KW SN SM SL SR KI KH KN KM
+			ST SZ SY VG KG KE AX BW IE ID AQ AS AR IM IL IO IN IQ VI IS IR AM AL
+			VN VA VC AE AD AG AF NP NR NU MA NZ NA NC NE NF NG NI NL NO HK HN HM
+			HR HT HU AU UG UA MX MZ UM MT MW MV MQ MP MS MR MM ML MO MN MH US ME
+			MD MG MF UY MC UZ CR CV CU SB CZ CY CX SA CC CA CG CF CD CK CI CH CO
+			CN CM CL PK PH PN PL PM PA PF PG PE PY SJ PR PS PW PT JE SH BY BZ BT
+			JM BV JO WS BR BS BL BM BN BO BH BI BJ BD BE BF BG BA BB WF OM SV ET
+			ZW ES ER VE EE EG ZA EC ZM EH MK RO RE SO VU LV RU RW LT RS LU YT LR
+			DZ TK AZ YE TZ DO DM DJ DK QA TR MU IT GN GM GL GI GH GG GF GE GD AO
+			GB GA AT AW GY GW MY GU GT GS GR GQ GP TF AI TD TC LY TN TO TL TM TJ
+			LS TH TV TW TT TG LK JP LI LB LC LA</media:restriction>
+		<media:thumbnail url="https://i.ytimg.com/vi/VVoO9cdk5Eo/0.jpg"
+			height="360" width="480" time="00:02:49" />
+		<media:thumbnail url="https://i.ytimg.com/vi/VVoO9cdk5Eo/1.jpg"
+			height="90" width="120" time="00:01:24.500" />
+		<media:thumbnail url="https://i.ytimg.com/vi/VVoO9cdk5Eo/2.jpg"
+			height="90" width="120" time="00:02:49" />
+		<media:thumbnail url="https://i.ytimg.com/vi/VVoO9cdk5Eo/3.jpg"
+			height="90" width="120" time="00:04:13.500" />
+		<media:title type="plain">OK Kanmani - Kaara Aattakkaara Lyric
+			Video | A.R. Rahman, Mani Ratnam</media:title>
+		<yt:duration seconds="338" />
+	</media:group>
+	<gd:rating average="4.9371624" max="5" min="1" numRaters="2037"
+		rel="http://schemas.google.com/g/2005#overall" />
+	<yt:statistics favoriteCount="0" viewCount="148847" />
+</entry>

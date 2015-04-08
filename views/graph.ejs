@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>My first column chart by Highcharts</title>
+        <!-- 1. Add JQuery and Highcharts in the head of your page -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+         
+        <!-- 2. You can add print and export feature by adding this line -->
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+         
+         
+        <!-- 3. Add the JavaScript with the Highchart options to initialize the chart -->
+        <script type="text/javascript">
+        /* jQuery(document).ready(function() {
+ 
+            var options = {
+                chart: {
+                    renderTo: 'container',
+                    type: 'column'
+                },
+                title: {
+                    text: 'Tiny Tool Monthly Sales'                
+                },
+                subtitle: {
+                    text: '2014 Q1-Q2'
+                },
+                xAxis: {
+                    categories: []
+                },
+                yAxis: {
+                    title: {
+                        text: 'Sales'
+                    }
+                },
+                series: []
+            };
+            // JQuery function to process the csv data
+            $.get('column-data.csv', function(data) {
+                // Split the lines
+                var lines = data.split('\n');
+                $.each(lines, function(lineNo, line) {
+                    var items = line.split(',');
+                     
+                    // header line contains names of categories
+                    if (lineNo == 0) {
+                        $.each(items, function(itemNo, item) {
+                            //skip first item of first line
+                            if (itemNo > 0) options.xAxis.categories.push(item);
+                        });
+                    }
+                     
+                    // the rest of the lines contain data with their name in the first position
+                    else {
+                        var series = {
+                            data: []
+                        };
+                        $.each(items, function(itemNo, item) {
+                            if (itemNo == 0) {
+                                series.name = item;
+                            } else {
+                                series.data.push(parseFloat(item));
+                            }
+                        });
+                         
+                        options.series.push(series);
+ 
+                    }
+                     
+                });
+                //putting all together and create the chart
+                var chart = new Highcharts.Chart(options);
+            });        
+             
+        });
+ */
+        jQuery(document).ready(function() {
+            
+        	$('#rahman').highcharts({
+                title: {
+                    text: 'Likability Trend - A.R.Rahman Ok Kanmani',
+                    x: -20 //center
+                },
+                subtitle: {
+                    text: 'Source: youtube.com',
+                    x: -20
+                },
+                xAxis: {
+                    categories: ['04-01', '04-02', '04-03', '04-04', '04-05']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Avg Rating'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    valueSuffix: '°C'
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: [{
+                    name: 'Aye Sinamika',
+                    data: [4.98, 4.3, 4.8, 4.8, 4.867]
+                }, {
+                    name: 'Naane Varugiraen',
+                    data: [4.5, 4.3, 4.6, 4.9, 4.8]
+                }, {
+                    name: 'Theera Ulaa',
+                    data: [4.1, 4.2, 4.3, 4.3, 4.8]
+                }, {
+                    name: 'Kaara Aattakkaara',
+                    data: [3.9, 4.2, 4.5, 4.59, 4.89]
+                }]
+            });
+        });
+
+        
+        </script>
+         
+    </head>
+    <body>
+         
+        <!-- 3. Add the container -->
+        <!-- <div id="container" style="width: 900px; height: 900px; margin: 0 auto"></div> -->  
+        <div id="rahman" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                 
+    </body>
+</html>
