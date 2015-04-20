@@ -45,12 +45,18 @@ app.get('/about', about.about);
 var map = require('./routes/map');
 app.get('/map', map.map);
 
+var arr = require('./routes/arryoutube');
+app.get('/arryoutube', arr.displaystats);
+
+
+
 var graph = require('./routes/graph');
 app.get('/graph', graph.graph);
 
 var dataload = require('./routes/dataload');
 app.get('/dataload', dataload.dataload);
 app.get('/dataload/:id', dataload.findById);
+app.post('/append/:id', dataload.appendById);
 
 var info = require('./routes/info');
 app.get('/info', info.info);

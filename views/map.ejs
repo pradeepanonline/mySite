@@ -18,17 +18,53 @@ table,th,td {
 </style>
 
 
-<!-- <div id="map" style="width: 800px; height: 450px; padding-left: 100px;"></div>-->
+<!-- <div id="prad" style="width: 800px; height: 450px; padding-left: 100px;"></div> -->
 
 <!-- Columns are always 50% wide, on mobile and desktop -->
     <div class="row">
       <div class="col-xs-6" id="prad" style="width: 800px; height: 450px; padding-left: 100px;">.col-xs-6</div>
-      <div class="col-xs-6" id ="details" style="width: 900px; height: 120px; padding-left: 100px;">.col-xs-6</div>
+      <!--<div class="col-xs-6" id ="details" style="width: 900px; height: 120px; padding-left: 100px;">.col-xs-6</div>-->
     </div>
+	<div id="images"></div>
 
 
+<script>
+function getFlickr(state) {
+	console.log("In getFlickr: "  + state);
+	$("#images").empty();
+ var searchTag = state;
+  var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+  $.getJSON( flickerAPI, {
+    tags: searchTag,
+    tagmode: "any",
+    format: "json"
+  })
+    .done(function( data ) {
+        var newdata = shuffle(data);
+      $.each( newdata.items, function( i, item ) {
+        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+        if ( i === 15 ) {
+          return false;
+        }
+      });
+    });
+}
+</script>
 
+<script>
+function shuffle(sourceArray) {
+	console.log(sourceArray.items.length);
+	for (var n = 0; n < sourceArray.length - 1; n++) {
+		console.log("In");
+        var k = n + Math.floor(Math.random() * (sourceArray.length - n));
 
+        var temp = sourceArray[k];
+        sourceArray[k] = sourceArray[n];
+        sourceArray[n] = temp;
+    }
+    return sourceArray;
+}
+</script>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -47,19 +83,22 @@ table,th,td {
 
 	function myCallback(event, data)
 	{
-		 alert('you clicked state '+ data.name);
+		 console.log('you clicked state '+ data.name);
+		 var state = data.name
 		 $.ajax({ 
          type: "GET",
               dataType: "text",
              url: "http://localhost:3000/info?state="+data.name,
              success: function(response){  
-                 alert(response);
+                 //alert(response);
                  // 
                  //console.log(response);     
                 var responseText = jQuery.parseJSON(response);
                 //var responseText = jQuery.parseJSON('{ "name": "John" }' );
                 //console.log(responseText);
-                $('#details').html("<h3>" + responseText.longurl + "</h3>");                  
+
+                //$('#details').html("<h3>" + responseText.longurl + "</h3>"); 
+                getFlickr(state);                 
              }
          });
   

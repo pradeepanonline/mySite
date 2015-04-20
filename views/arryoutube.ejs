@@ -25,7 +25,8 @@
 <script type="text/javascript">
            jQuery(document).ready(function() {
                var xAxisData = ['04-01', '04-02', '04-03', '04-04', '04-05'];
-               var songData = [4,5,3,5];
+               var videoData = <%- JSON.stringify(videoRatingData) %>;
+               var videoName = <%- JSON.stringify(videoName) %>;;
         	   $('#rahman').highcharts({
                 title: {
                     text: 'Likability Trend - A.R.Rahman Ok Kanmani',
@@ -58,17 +59,8 @@
                     borderWidth: 0
                 },
                 series: [{
-                    name: 'Aye Sinamika',
-                    data: [4.98, 4.3, 4.8, 4.8, 4.867]
-                }, {
-                    name: 'Naane Varugiraen',
-                    data: [4.5, 4.3, 4.6, 4.9, 4.8]
-                }, {
-                    name: 'Theera Ulaa',
-                    data: [4.1, 4.2, 4.3, 4.3, 4.8]
-                }, {
-                    name: 'Kaara Aattakkaara',
-                    data: songData
+                    name: videoName,
+                    data: videoData
                 }]
             });
         });
