@@ -46,7 +46,7 @@ var map = require('./routes/map');
 app.get('/map', map.map);
 
 var arr = require('./routes/arryoutube');
-app.get('/arryoutube', arr.displaystats);
+app.get('/arryoutube/:videoid', arr.displaystats);
 
 
 

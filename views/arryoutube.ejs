@@ -17,17 +17,19 @@
         <script src="http://code.highcharts.com/highcharts.js"></script>
          
         <!-- 2. You can add print and export feature by adding this line -->
-        <script src="http://code.highcharts.com/modules/exporting.js"></script>
-         
-
-
+        <!-- <script src="http://code.highcharts.com/modules/exporting.js"></script> -->
+        
  
 <script type="text/javascript">
-           jQuery(document).ready(function() {
-               var xAxisData = ['04-01', '04-02', '04-03', '04-04', '04-05'];
-               var videoData = <%- JSON.stringify(videoRatingData) %>;
-               var videoName = <%- JSON.stringify(videoName) %>;;
-        	   $('#rahman').highcharts({
+				$(document).ready(function() {
+               //var xAxisData = ['04-01', '04-02', '04-03', '04-04', '04-05'];
+               var xAxisData = <%- JSON.stringify(timeData) %>;
+               var videoData = <%- JSON.stringify(videoRatingData) %>;               
+               var videoName = <%- JSON.stringify(videoName) %>;
+               console.log(JSON.stringify(videoName));
+               console.log(JSON.stringify(videoData));
+               
+               $('#rahman').highcharts({
                 title: {
                     text: 'Likability Trend - A.R.Rahman Ok Kanmani',
                     x: -20 //center
@@ -50,7 +52,8 @@
                     }]
                 },
                 tooltip: {
-                    valueSuffix: '/5'
+                    valueSuffix: '/5',
+                    pointFormat: "Value: {point.y:.2f}"
                 },
                 legend: {
                     layout: 'vertical',
@@ -79,7 +82,7 @@
 		<button id="mybutton">Enter Youtube Video ID here</button><br><br>
 		<button id="loadByVideoId">Enter Youtube Video ID to find</button> <br><br>
 	</div>
-		<div id="rahman" style="min-width: 310px; height: 400px; margin: 0 auto"> </div>
+		<div id="rahman" style="min-width: 310px; height: 500px; margin: 0 auto"> </div>
 		<div id="realtime" style="min-width: 310px; height: 400px; margin: 0 auto"> </div>
 		<div id="pradeepan" style="min-width: 310px; height: 400px; margin: 0 auto"> </div>
 	
@@ -148,7 +151,7 @@ $(document).ready(function(){
     });
 });
 
-$(function () {
+/* $(function () {
     $(document).ready(function () {
         Highcharts.setOptions({
             global: {
@@ -223,7 +226,7 @@ $(function () {
             }]
         });
     });
-});
+}); */
 
 </script>
  
