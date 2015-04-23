@@ -15,6 +15,7 @@
 		<!-- 1. Add JQuery and Highcharts in the head of your page -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/highcharts-more.js"></script>
          
         <!-- 2. You can add print and export feature by adding this line -->
         <!-- <script src="http://code.highcharts.com/modules/exporting.js"></script> -->
@@ -22,14 +23,26 @@
  
 <script type="text/javascript">
 				$(document).ready(function() {
-               //var xAxisData = ['04-01', '04-02', '04-03', '04-04', '04-05'];
-               var xAxisData = <%- JSON.stringify(timeData) %>;
-               var videoData = <%- JSON.stringify(videoRatingData) %>;               
-               var videoName = <%- JSON.stringify(videoName) %>;
-               console.log(JSON.stringify(videoName));
-               console.log(JSON.stringify(videoData));
+
+			   var payloadData = <%- JSON.stringify(payload) %>;
+			   console.log("#");
+			   console.log(payloadData);
+               var xAxisData = ['04-01', '04-02', '04-03', '04-04', '04-05'];
+
+               var videoData = [];
+               var videoName = "abcd";
                
-               $('#rahman').highcharts({
+               
+
+               var video2Data = [];
+               var video2Name = [];
+               
+               
+               
+               //console.log(JSON.stringify(videoName));
+               //console.log(JSON.stringify(videoData));
+               
+               $('#rating').highcharts({
                 title: {
                     text: 'Likability Trend - A.R.Rahman Ok Kanmani',
                     x: -20 //center
@@ -53,7 +66,7 @@
                 },
                 tooltip: {
                     valueSuffix: '/5',
-                    pointFormat: "Value: {point.y:.2f}"
+                    pointFormat: "Value: {point.y:.3f}"
                 },
                 legend: {
                     layout: 'vertical',
@@ -64,12 +77,65 @@
                 series: [{
                     name: videoName,
                     data: videoData
+                },
+                {
+                name : video2Name,
+                data : video2Data
+               }]
+            });
+        });
+      
+</script>
+
+<!-- 
+ 
+<script type="text/javascript">
+				$(document).ready(function() {
+               //var xAxisData = ['04-01', '04-02', '04-03', '04-04', '04-05'];
+               var xAxisData = <%- JSON.stringify(timeData) %>;
+			   //var viewsArray = [5, 699900, 734900, 876800, 9230000];
+               var viewsArray = <%- JSON.stringify(viewsData) %>;               
+               var videoName = <%- JSON.stringify(videoName) %>;
+               console.log(JSON.stringify(xAxisData));
+               console.log(JSON.stringify(viewsArray));
+               
+               $('#viewers').highcharts({
+                title: {
+                    text: 'Likability Trend - A.R.Rahman Ok Kanmani',
+                    x: -20 //center
+                },
+                subtitle: {
+                    text: 'Source: youtube.com',
+                    x: -20
+                },
+                xAxis: {
+                    categories: xAxisData
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of views'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: [{
+                    name: videoName,
+                    data: viewsArray
                 }]
             });
         });
       
 </script>
- 
+-->
 </head>
 
 
@@ -78,12 +144,15 @@
 	<h3>Hhi</h3><br><br>
 	
 	<div style="margin-left: 25%">
+	<!-- 
 		<input type="text" id="mytext">
 		<button id="mybutton">Enter Youtube Video ID here</button><br><br>
 		<button id="loadByVideoId">Enter Youtube Video ID to find</button> <br><br>
+	 -->
 	</div>
-		<div id="rahman" style="min-width: 310px; height: 500px; margin: 0 auto"> </div>
-		<div id="realtime" style="min-width: 310px; height: 400px; margin: 0 auto"> </div>
+		<div id="viewers" style="min-width: 310px; height: 500px; margin: 0 auto"> </div>
+		<div id="blank" style="min-width: 310px; height: 50px; margin: 0 auto"> </div>
+		<div id="rating" style="min-width: 310px; height: 400px; margin: 0 auto"> </div>
 		<div id="pradeepan" style="min-width: 310px; height: 400px; margin: 0 auto"> </div>
 	
 </body>
