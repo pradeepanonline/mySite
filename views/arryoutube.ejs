@@ -6,11 +6,13 @@
 <meta name="description" content="">
 <title><%= title %></title>
 <!-- Latest compiled and minified CSS -->
+
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
 
 		<!-- 1. Add JQuery and Highcharts in the head of your page -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -24,23 +26,38 @@
 <script type="text/javascript">
 				$(document).ready(function() {
 
-			   var payloadData = <%- JSON.stringify(payload) %>;
-			   console.log("#");
-			   console.log(payloadData);
-               var xAxisData = ['04-01', '04-02', '04-03', '04-04', '04-05'];
+			   var payloadData = <%- JSON.stringify(payload[0]) %>;
+			   var pradData = <%- payload[0] %>;
+			   var sachData = <%- payload[1] %>;
+			   
+			   console.log("@@@" + pradData.videoId + "@@@");
+			   
+			   console.log("##############");
+			   console.log(payloadData["videoId"]);
+			   console.log("##############");
+			   console.log(payloadData[0]);
+			   var tempobj = payloadData[0];
+			   console.log(tempobj.videoId);
+			   <% payload.forEach(function(realData) { 
+			   		console.log("In loop: " + realData);
+		        }); %>
+			   var nameData = <%- JSON.stringify(name) %>;
+			   //console.log(nameData);
+			   
+               var xAxisData = pradData.timeData;
 
-               var videoData = [];
-               var videoName = "abcd";
+               var videoData = pradData.ratingData;
+               var videoName = pradData.videoName;
                
                
 
-               var video2Data = [];
-               var video2Name = [];
+               var video2Data = sachData.ratingData;
+               var video2Name = sachData.videoName;
                
                
                
-               //console.log(JSON.stringify(videoName));
-               //console.log(JSON.stringify(videoData));
+               console.log(JSON.stringify(videoName));
+               console.log(JSON.stringify(videoData));
                
                $('#rating').highcharts({
                 title: {
@@ -87,68 +104,16 @@
       
 </script>
 
-<!-- 
- 
-<script type="text/javascript">
-				$(document).ready(function() {
-               //var xAxisData = ['04-01', '04-02', '04-03', '04-04', '04-05'];
-               var xAxisData = <%- JSON.stringify(timeData) %>;
-			   //var viewsArray = [5, 699900, 734900, 876800, 9230000];
-               var viewsArray = <%- JSON.stringify(viewsData) %>;               
-               var videoName = <%- JSON.stringify(videoName) %>;
-               console.log(JSON.stringify(xAxisData));
-               console.log(JSON.stringify(viewsArray));
-               
-               $('#viewers').highcharts({
-                title: {
-                    text: 'Likability Trend - A.R.Rahman Ok Kanmani',
-                    x: -20 //center
-                },
-                subtitle: {
-                    text: 'Source: youtube.com',
-                    x: -20
-                },
-                xAxis: {
-                    categories: xAxisData
-                },
-                yAxis: {
-                    title: {
-                        text: 'Number of views'
-                    },
-                    plotLines: [{
-                        value: 0,
-                        width: 1,
-                        color: '#808080'
-                    }]
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'middle',
-                    borderWidth: 0
-                },
-                series: [{
-                    name: videoName,
-                    data: viewsArray
-                }]
-            });
-        });
-      
-</script>
--->
 </head>
 
 
 <body>
 	<% include navbar %> 
-	<h3>Hhi</h3><br><br>
+	<h6></h6>
 	
-	<div style="margin-left: 25%">
-	<!-- 
-		<input type="text" id="mytext">
-		<button id="mybutton">Enter Youtube Video ID here</button><br><br>
-		<button id="loadByVideoId">Enter Youtube Video ID to find</button> <br><br>
-	 -->
+	
+	<div style="margin-left: 5%">
+		<img border="0" src="../O_Kadhal_Kanmani.jpg" width="1350" height="400">
 	</div>
 		<div id="viewers" style="min-width: 310px; height: 500px; margin: 0 auto"> </div>
 		<div id="blank" style="min-width: 310px; height: 50px; margin: 0 auto"> </div>
@@ -220,86 +185,8 @@ $(document).ready(function(){
     });
 });
 
-/* $(function () {
-    $(document).ready(function () {
-        Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
-
-        $('#realtime').highcharts({
-            chart: {
-                type: 'spline',
-                animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                    load: function () {
-
-                        // set up the updating of the chart each second
-                        var series = this.series[0];
-                        setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                y = Math.random();
-                            series.addPoint([x, y], true, true);
-                        }, 10000);
-                    }
-                }
-            },
-            title: {
-                text: 'Live random data'
-            },
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: 'Value'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                name: 'Random data',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random()
-                        });
-                    }
-                    return data;
-                }())
-            }]
-        });
-    });
-}); */
-
 </script>
  
 <div class="container"><% include footer %></div>
-
 
 </html>

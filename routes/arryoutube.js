@@ -69,47 +69,62 @@ var getListByVideoId = function(videoid) {
 	});
 };
 
-var getFullList = function() {
+var getFullList = function(res) {
 	console.log('Retrieving video list from db ...');
 	statsList = [];
-	db.collection('video', function(err, collection) {
-		var cursor = db.collection('video').find();
-		cursor.each(function(err, item) {
-			if (item != null) {
-				console.log("Retrieved video : " + item._id);
-				var videoId = item._id;
-				var videoName = item.title;
-				console.log("videoName : " + videoName);
-				ratingData = [];
-				numViewersData = [];
-				timeData = [];
-				for ( var i = 0; i < item.stats.length; i++) {
-					var numViewers = item.stats[i].viewCount;
-					numViewersData.push(numViewers / 1);
-					var roundedRating = roundNumber(item.stats[i].average, 3);
-					ratingData.push(roundedRating);
-					timeData.push(item.stats[i].timestamp);
-				}
-				var stats = {
-					"videoId" : videoId,
-					"videoName" : videoName,
-					"viewsData" : numViewersData,
-					"ratingData" : ratingData,
-					"timeData" : timeData
-				};
-				statsList.push(stats);
-			}
-		});
-	});
+	db.collection('video',
+			function(err, collection) {
+				var cursor = db.collection('video').find();
+				cursor
+						.each(function(err, item) {
+							if (item == null) {
+								console.log("Full StatsList:"
+										+ statsList.length);
+								res.render('arryoutube', {
+									title : new Date(),
+									name : "james",
+									payload : statsList
+								});
+							} else {
+								console.log("Retrieved video : " + item._id);
+								var videoId = item._id;
+								var videoName = item.title;
+								console.log("videoName : " + videoName);
+								ratingData = [];
+								numViewersData = [];
+								timeData = [];
+								for ( var i = 0, j = 0; i < item.stats.length
+										&& j < 3; i++, j++) {
+									var numViewers = item.stats[i].viewCount;
+									numViewersData.push(numViewers / 1);
+									var roundedRating = roundNumber(
+											item.stats[i].average, 3);
+									ratingData.push(roundedRating);
+									timeData.push(item.stats[i].timestamp);
+								}
+
+								var stats = {
+									videoId : videoId,
+									videoName : videoName,
+									viewsData : numViewersData,
+									ratingData : ratingData,
+									timeData : timeData
+								};
+								var statsobj = JSON.stringify(stats);
+								statsList.push(statsobj);
+								console.log("@@ Stats @@" + statsobj);
+								console.log("#" + statsList.length);
+								console.log(statsList);
+							}
+						});
+
+			});
 };
 
 exports.displaystats = function(req, res) {
-	getFullList();
-	console.log(statsList);
-	res.render('arryoutube', {
-		title : 'ARR Youtube Project',
-		payload : statsList
-	});
+	getFullList(res);
+	console.log("stats list : " + statsList);
+	
 };
 
 /*exports.displaystats = function(req, res) {
