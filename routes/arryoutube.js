@@ -25,7 +25,7 @@ var video2Name = "Theera";
 	
 db.open(function(err, db) {
     if(!err) {
-        console.log("Connected to 'youtube_db' database");
+        console.log("Connected to 'youtube' database");
         db.collection('video', {strict:true}, function(err, collection) {
             if (err) {
                 console.log("The 'video' collection doesn't exist. Error !!...");
@@ -94,7 +94,7 @@ var getFullList = function(res) {
 								numViewersData = [];
 								timeData = [];
 								for ( var i = 0, j = 0; i < item.stats.length
-										&& j < 3; i++, j++) {
+										&& j < 10; i++, j++) {
 									var numViewers = item.stats[i].viewCount;
 									numViewersData.push(numViewers / 1);
 									var roundedRating = roundNumber(
@@ -121,10 +121,20 @@ var getFullList = function(res) {
 			});
 };
 
-exports.displaystats = function(req, res) {
+exports.displaytrend = function(req, res) {
 	getFullList(res);
 	console.log("stats list : " + statsList);
 	
+};
+
+
+exports.displaybargraph = function(req, res) {
+	db.collection('summary', function(err, collection) {
+        collection.find().toArray(function(err, items) {
+        	console.log(items);
+            res.send(items);
+        });
+    });
 };
 
 /*exports.displaystats = function(req, res) {
