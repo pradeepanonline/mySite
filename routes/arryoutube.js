@@ -63,7 +63,9 @@ var getListByVideoId = function(videoid) {
 				var roundedRating = roundNumber(item.stats[i].average, 3);
 				console.log("Pushing rounded ratingData: " + roundedRating);
 				ratingData.push (roundedRating);
-				timeData.push(item.stats[i].timestamp);
+				console.log(item.stats[i].timestamp);
+				console.log(item.stats[i].timestamp.toDateString());
+				timeData.push(item.stats[i].timestamp.toDateString());
 			}
 		});
 	});
@@ -78,29 +80,35 @@ var getFullList = function(res) {
 				cursor
 						.each(function(err, item) {
 							if (item == null) {
-								console.log("Full StatsList:"
-										+ statsList.length);
 								res.render('arryoutube', {
 									title : new Date(),
 									name : "james",
 									payload : statsList
 								});
 							} else {
-								console.log("Retrieved video : " + item._id);
+								//console.log("Retrieved video : " + item._id);
 								var videoId = item._id;
 								var videoName = item.title;
-								console.log("videoName : " + videoName);
+								//console.log("videoName : " + videoName);
 								ratingData = [];
 								numViewersData = [];
 								timeData = [];
-								for ( var i = 0, j = 0; i < item.stats.length
-										&& j < 10; i++, j++) {
+								var prevTime = new Date().toDateString();
+								for ( var i = 0; i < item.stats.length; i++) {
+									var newTime = item.stats[i].timestamp.toDateString();
+									if(prevTime == newTime) {
+										console.log("Skip");
+										continue;
+									}
+									prevTime = newTime;
 									var numViewers = item.stats[i].viewCount;
 									numViewersData.push(numViewers / 1);
 									var roundedRating = roundNumber(
 											item.stats[i].average, 3);
 									ratingData.push(roundedRating);
-									timeData.push(item.stats[i].timestamp);
+									console.log(item.stats[i].timestamp);
+									console.log(item.stats[i].timestamp.toDateString());
+									timeData.push(item.stats[i].timestamp.toDateString());
 								}
 
 								var stats = {
@@ -112,9 +120,9 @@ var getFullList = function(res) {
 								};
 								var statsobj = JSON.stringify(stats);
 								statsList.push(statsobj);
-								console.log("@@ Stats @@" + statsobj);
+								//console.log("@@ Stats @@" + statsobj);
 								console.log("#" + statsList.length);
-								console.log(statsList);
+								//console.log(statsList);
 							}
 						});
 
@@ -129,9 +137,10 @@ exports.displaytrend = function(req, res) {
 
 
 exports.displaybargraph = function(req, res) {
+	console.log("In Bar Graph Summary");
 	db.collection('summary', function(err, collection) {
         collection.find().toArray(function(err, items) {
-        	console.log(items);
+        	//console.log(items);
             res.send(items);
         });
     });
